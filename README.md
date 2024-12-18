@@ -12,3 +12,7 @@ Setiap detik, stream akan mengeluarkan warna satu per satu dari daftar colors.Wa
 W13: Jawaban Soal 4
 ![warna2](image.png)
 ![warni2](image-1.png)
+
+W13: Jawaban Soal 5
+listen() digunakan untuk mendengarkan stream dan mengeksekusi callback setiap kali stream menghasilkan data baru
+await for adalah cara untuk secara asinkron "menunggu" data yang dihasilkan oleh stream dan secara otomatis mengiterasi semua data yang diterima oleh stream
