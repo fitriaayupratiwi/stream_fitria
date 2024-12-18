@@ -8,3 +8,7 @@ digunakan untuk meneruskan nilai dari stream yang dihasilkan oleh Stream.periodi
 
 Apa maksud isi perintah kode tersebut?
 Setiap detik, stream akan mengeluarkan warna satu per satu dari daftar colors.Warna akan terus dipilih berdasarkan waktu detik (t), dan ketika mencapai akhir daftar (10 warna), proses akan berulang dari awal.
+
+W13: Jawaban Soal 4
+![warna2](image.png)
+![warni2](image-1.png)

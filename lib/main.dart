@@ -30,6 +30,30 @@ class StreamHomepage extends StatefulWidget {
 class _StreamHomepageState extends State<StreamHomepage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Stream'),
+        ),
+        body: Container(
+          decoration: BoxDecoration(color: bgColor),
+        ));
+  }
+
+  Color bgColor = Colors.blueGrey;
+  late ColorStream colorStream;
+
+  void changeColor() async {
+    await for (var eventColor in colorStream.getColors()) {
+      setState(() {
+        bgColor = eventColor;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    colorStream = ColorStream();
+    changeColor();
   }
 }
