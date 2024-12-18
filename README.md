@@ -1,16 +1,10 @@
-# stream_fitria
+Nama: Fitria ayu Pratiwi
+NIM: 362358302016
+Kelas: 2B TRPL
 
-A new Flutter project.
+W13: Jawaban Soal 3
+Jelaskan fungsi keyword yield\*
+digunakan untuk meneruskan nilai dari stream yang dihasilkan oleh Stream.periodic
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Apa maksud isi perintah kode tersebut?
+Setiap detik, stream akan mengeluarkan warna satu per satu dari daftar colors.Warna akan terus dipilih berdasarkan waktu detik (t), dan ketika mencapai akhir daftar (10 warna), proses akan berulang dari awal.
