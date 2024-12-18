@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stream_Fitria',
+      title: 'Stream_Fitri',
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
