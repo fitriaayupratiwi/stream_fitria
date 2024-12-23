@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'dart:async';
 import 'stream.dart';
 
 void main() {
@@ -28,37 +30,72 @@ class StreamHomepage extends StatefulWidget {
 }
 
 class _StreamHomepageState extends State<StreamHomepage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Stream'),
-        ),
-        body: Container(
-          decoration: BoxDecoration(color: bgColor),
-        ));
-  }
+  late StreamController numberStreamController;
+  late NumberStream numberStream;
+  int lastNumber = 0;
 
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
 
-  void changeColor() async {
-    colorStream.getColors().listen((eventColor) {
-      setState(() {
-        bgColor = eventColor;
-      });
-    });
-    // await for (var eventColor in colorStream.getColors()) {
-    //   setState(() {
-    //     bgColor = eventColor;
-    //   });
-    // }
-  }
-
   @override
   void initState() {
     super.initState();
-    colorStream = ColorStream();
-    changeColor();
+
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+
+    Stream stream = numberStreamController.stream;
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(lastNumber.toString()),
+          ElevatedButton(
+              onPressed: () => addRandomNumber(),
+              child: Text('New Random Number')),
+        ],
+      ),
+    )
+        // appBar: AppBar(
+        //   title: const Text('Stream'),
+        // ),
+        // body: Container(
+        //   decoration: BoxDecoration(color: bgColor),
+        // )
+        );
+  }
+
+  // Mengubah warna latar belakang berdasarkan stream
+  void changeColor() async {
+    colorStream.getColors().listen((eventColor) {
+      setState(() {
+        bgColor = eventColor; // Mengubah latar belakang
+      });
+    });
+  }
+
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
+  }
+
+  @override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
   }
 }
